@@ -72,8 +72,7 @@
     const startBtn = document.getElementById("startBtn")
     const stopBtn = document.getElementById("stopBtn")
     const resetBtn = document.getElementById("resetBtn")
-
-    window.startBtn = startBtn
+    const saveBtn = document.getElementById("saveBtn")
 
     function updateButtonState() {
         // Only show Start Button when Timer is not Running
@@ -84,6 +83,8 @@
 
         // Only show Reset Button when Timer is not Running and is not set to zero already
         resetBtn.disabled = timer.timerRunning || (timer.lastTime === null);
+
+        saveBtn.disabled = (timer.lastTime === null) && (timer.timerRunning === false)
     }
 
     function updateElement(el, value, len = 2) {
@@ -127,6 +128,37 @@
     resetBtn.addEventListener('click', (e) => {
         timer.reset()
         updateButtonState()
+
+        localStorage.removeItem("clockData")
     })
 
+    saveBtn.addEventListener('click', (e) => {
+        localStorage.setItem("clockData", JSON.stringify({
+            timerRunning: timer.timerRunning,
+            timerStarted: timer.timerStarted,
+            lastTime: timer.lastTime
+        }))
+    })
+
+    function attemptLoad() {
+        const lastSave = localStorage.getItem("clockData")
+        if (!lastSave) return;
+        const json = JSON.parse(lastSave)
+
+        console.log(json)
+
+        timer.timerRunning = json.timerRunning;
+        timer.timerStarted = json.timerStarted;
+        timer.lastTime = json.lastTime;
+
+        updateButtonState()
+
+        if (!timer.timerRunning) {
+            timer.renderFn(null, true)
+        } else if (!timer.renderId) {
+            timer.renderFn()
+        }
+    }
+
+    attemptLoad()
 })();
