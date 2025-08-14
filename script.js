@@ -86,8 +86,8 @@
         resetBtn.disabled = timer.timerRunning || (timer.lastTime === null);
     }
 
-    function updateElement(el, value) {
-        const formatted = value.toString().padStart(2, "0");
+    function updateElement(el, value, len = 2) {
+        const formatted = value.toString().padStart(len, "0");
         if (el.nodeValue === formatted) return;
         el.nodeValue = formatted;
     }
@@ -105,7 +105,7 @@
         updateElement(hourEl, hours);
         updateElement(minEl, minutes);
         updateElement(secEl, seconds);
-        updateElement(msEl, ms);
+        updateElement(msEl, ms, 3);
 
         if (!once) {
             this.renderId = requestAnimationFrame(this.renderFn)
