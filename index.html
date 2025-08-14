@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppeklokke</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="clockContainer">
+        <div class="clockElement" id="hour">00</div>
+        <div class="clockSeperator">:</div>
+        <div class="clockElement" id="min">00</div>
+        <div class="clockSeperator">:</div>
+        <div class="clockElement" id="sec">00</div>
+        <div class="clockSeperator">:</div>
+        <div class="clockElement" id="ms" style="width: 90px;">000</div>
+    </div>
+    <div class="clockInfo">
+        <div>Hour(s)</div>
+        <div>Minute(s)</div>
+        <div>Second(s)</div>
+        <div style="width: 90px;">Millisecond(s)</div>
+    </div>
+    <div class="clockOptions">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn" disabled>Reset</button>
+    </div>
+</body>
+</html>

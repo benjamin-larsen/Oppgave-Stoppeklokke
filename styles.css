@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.clockContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.clockElement {
+    font-family: "Space Mono", monospace;
+    font-size: 25px;
+    height: 60px;
+    width: 60px;
+    background-color: #8b8b8b;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clockSeperator {
+    width: 12px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.clockInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.clockInfo div {
+    width: 60px;
+    text-align: center;
+}
